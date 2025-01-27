@@ -6,15 +6,11 @@ from source_code.exception import InsuranceException
 import pandas as pd
 from pymongo import MongoClient
 import os , sys 
+import typing
 load_dotenv()
 
-mysql_user = os.getenv("mysql_user")
-mysql_password = os.getenv("mysql_user_password")
-mysql_database_name = os.getenv("mysql_database_name")
 
-mongodb_connection_string = os.getenv("mongodb_connection_string")
-
-def connect_to_mongodb():
+def connect_to_mongodb(mongodb_connection_string:str):
     try:
         client = MongoClient(mongodb_connection_string) 
         print("successfully connected with mongodb")
@@ -25,7 +21,7 @@ def connect_to_mongodb():
         raise InsuranceException(e,sys)
         return None 
 
-def connect_to_mysql():
+def connect_to_mysql(mysql_user:str,mysql_password:str,mysql_database_name:str):
     try:
         # Connect to the MySQL server
         connection = mysql.connector.connect(
