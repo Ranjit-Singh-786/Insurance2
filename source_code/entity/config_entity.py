@@ -3,12 +3,6 @@ from source_code.exception import InsuranceException
 from datetime import datetime
 import os, sys 
 
-
-
-
-
-
-
 class TrainingPipelineConfig:
     def __init__(self):
         try:
@@ -31,5 +25,9 @@ class DataInegestinConfig:
             self.mongodb_connection_string = os.getenv("mongodb_connection_string")
             self.mongodb_database_name = os.getenv("mongodb_database_name") 
             self.mongodb_collection_name = os.getenv("mongodb_collection_name")
+            self.test_size = 0.2
+            self.dataset_file_name = "insurance.csv"
+            self.train_set_file_name = "train.csv"
+            self.test_set_file_name = "test.csv"
         except Exception as e:
             raise InsuranceException(e,sys)

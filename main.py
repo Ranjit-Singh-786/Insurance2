@@ -25,13 +25,8 @@ dataingestion_config_obj = config_entity.DataInegestinConfig(traininng_pipeline_
 
 dataingestion_obj = DataIngestion(dataingestionconfig_obj=dataingestion_config_obj)
 
-mongo_connection = connect_to_mongodb(mongodb_connection_string=dataingestion_config_obj.mongodb_connection_string) 
+data_ingestion_artifact =  dataingestion_obj.loading_datasets()
 
-if is_mongo_connected(mongo_connection):
-    dataingestion_obj.loading_datasets()
-else:
-    print("not connected")
-
-
-# os.makedirs(training_pipelinge_obj.artifact_dir,exist_ok=True)
-
+print("data file path : ",data_ingestion_artifact.Dataset_file_path)
+print("train file path : ",data_ingestion_artifact.Train_file_path)
+print("test file path : ",data_ingestion_artifact.Test_file_path)

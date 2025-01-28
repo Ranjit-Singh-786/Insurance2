@@ -1,3 +1,6 @@
 numpy
+pymongo
 python-dotenv
+pandas
+sklearn
 -e .
