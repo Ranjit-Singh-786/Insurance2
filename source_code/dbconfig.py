@@ -21,11 +21,11 @@ def connect_to_mongodb(mongodb_connection_string:str):
         raise InsuranceException(e,sys)
         return None 
 
-def connect_to_mysql(mysql_user:str,mysql_password:str,mysql_database_name:str):
+def connect_to_mysql(host:str,mysql_user:str,mysql_password:str,mysql_database_name:str):
     try:
         # Connect to the MySQL server
         connection = mysql.connector.connect(
-            host='localhost',      
+            host=host,      
             user=mysql_user,           
             password=mysql_password,       
             database=mysql_database_name, # Replace with your database name
@@ -37,7 +37,7 @@ def connect_to_mysql(mysql_user:str,mysql_password:str,mysql_database_name:str):
             print("Connected to MySQL Server")
             logging.info("Successfully connected with database!")
             return connection
-    except Error as e:
+    except Exception as e:
         custom_exception = InsuranceException(e,sys)
         logging.error(custom_exception.error_message)
         raise InsuranceException(e,sys)

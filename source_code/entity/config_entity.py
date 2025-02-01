@@ -19,9 +19,6 @@ class DataInegestinConfig:
             logging.info("Intialaizing DataInegestinConfig variables..")
             self.dataingestion_dir =  os.path.join(traininng_pipeline_config_obj.artifact_dir,"data ingestion")
             self.dataset_path = os.path.join(self.dataingestion_dir,"Dataset")
-            self.mysql_user = os.getenv("mysql_user")
-            self.mysql_password = os.getenv("mysql_user_password")
-            self.myssql_databse_name = os.getenv("mysql_database_name")
             self.mongodb_connection_string = os.getenv("mongodb_connection_string")
             self.mongodb_database_name = os.getenv("mongodb_database_name") 
             self.mongodb_collection_name = os.getenv("mongodb_collection_name")
@@ -29,5 +26,21 @@ class DataInegestinConfig:
             self.dataset_file_name = "insurance.csv"
             self.train_set_file_name = "train.csv"
             self.test_set_file_name = "test.csv"
+
+
+            self.host = os.getenv('mysql_host')
+            self.mysql_user = os.getenv('mysql_user')
+            self.mysql_password = os.getenv('mysql_user_password')
+            self.mysql_database= os.getenv('mysql_database')
+        except Exception as e:
+            raise InsuranceException(e,sys)
+
+class DataValidataionConfig:
+    def __init__(self,traininng_pipeline_config_obj:TrainingPipelineConfig):
+        try:
+            self.datavalidation_dir = os.path.join(traininng_pipeline_config_obj.artifact_dir,"Data validation") 
+            self.valid_data_file_path = os.path.join(self.datavalidation_dir,"valid_data.csv")
+            self.invalid_data_file_path = os.path.join(self.datavalidation_dir,"invalid_row_data.csv")
+
         except Exception as e:
             raise InsuranceException(e,sys)
