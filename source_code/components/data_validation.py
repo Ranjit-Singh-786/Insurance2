@@ -40,7 +40,7 @@ class DataValidation:
 
     @staticmethod
     def validate_bmi(value):
-        return isinstance(value, (int, float)) and value > 0 and value <= 40
+        return isinstance(value, (int, float)) and value > 0 and value <= 41
 
     @staticmethod
     def validate_children(value):

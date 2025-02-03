@@ -44,3 +44,6 @@ class DataValidataionConfig:
 
         except Exception as e:
             raise InsuranceException(e,sys)
+
+
+        

@@ -33,9 +33,9 @@ class DataIngestion:
 
             logging.info("connect with mysql ")
 
-            query = "SELECT * FROM insurance_data"
+            query = "SELECT * FROM insurance_data_sql"
             df1 = pd.read_sql(query, sql_connection)
-
+            df1.drop('id',axis=1,inplace=True)
 
             mongo_connection = connect_to_mongodb(mongodb_connection_string=self.dataingestion_config_obj.mongodb_connection_string) 
             logging.info("connected with mongodb")
