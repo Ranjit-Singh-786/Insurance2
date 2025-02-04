@@ -51,7 +51,25 @@ class DataCleaningConfig:
         try:
             self.data_cleaning_dir = os.path.join(traininng_pipeline_config_obj.artifact_dir,"Data cleaning") 
             self.clean_data_file_path = os.path.join(self.data_cleaning_dir,"cleaned_data.csv")
+
         except Exception as e:
             raise InsuranceException(e,sys)
 
 
+class  DataTransFormationConfig:
+    def __init__(self,traininng_pipeline_config_obj: TrainingPipelineConfig):
+        try:
+            self.data_transormation_dir = os.path.join(traininng_pipeline_config_obj.artifact_dir,"Data Transormation") 
+            self.transformed_data_file_path = os.path.join(self.data_transormation_dir,'transformed_data.csv')
+            self.onehotedata_dir = os.path.join(self.data_transormation_dir,"onehot")
+            self.standardized_dir = os.path.join(self.data_transormation_dir,"scaled")
+
+            self.one_hot_data_file_path = os.path.join(self.onehotedata_dir,"one_hot_data.csv")
+            self.onehote_encoder_model_path = os.path.join(self.onehotedata_dir,'onehot_encoder.lb')
+
+            self.scaled_data_file_path = os.path.join(self.standardized_dir,"standard_data.csv")
+            self.scaler_model_path  = os.path.join(self.standardized_dir,'robust_scaler.lb')
+
+        except Exception as e:
+            raise InsuranceException(e,sys)
+        

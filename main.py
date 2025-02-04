@@ -6,6 +6,7 @@ from source_code.utils import is_mongo_connected
 from source_code.components.data_ingestion import DataIngestion
 from source_code.components.data_validation import DataValidation
 from source_code.components.data_cleaning import DataCleaning
+from source_code.components.data_transformation import DataTransFormation
 import  sys,os 
 
 
@@ -29,3 +30,13 @@ datacleaning_obj = DataCleaning(datacleaning_config_obj=data_cleaning_config_obj
                                 datavalidation_artifact=data_validation_artifact)
 data_cleaning_artifact  = datacleaning_obj.DataCleaningInitiate()
 print("cleaning done")
+
+
+data_transformation_config_obj =  config_entity.DataTransFormationConfig(traininng_pipeline_config_obj=training_pipelinge_obj)
+data_transormation_obj =  DataTransFormation(
+                    data_transformation_config=data_transformation_config_obj,
+                    data_cleaning_artifact=data_cleaning_artifact
+)
+data_transormation_artifact =  data_transormation_obj.transform_initiate()
+print("Data transformation Done ✅")
+
