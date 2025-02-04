@@ -1,2 +1,16 @@
 ## detailed project report 
-Data ingestion 
+Data ingestion
+1 collecting data from mongodb 
+2 collecting data from mysql
+
+Data Validation
+1. columns wise 
+2. row wise 
+3. value wise 
+
+Data Cleaning steps:
+1. Remove Duplicate Data
+2. Handle Missing Data
+3. Handle Outliers
+4. Handle Inconsistent Data
+5. Remove Irrelevant Features

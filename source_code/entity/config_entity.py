@@ -46,4 +46,12 @@ class DataValidataionConfig:
             raise InsuranceException(e,sys)
 
 
-        
+class DataCleaningConfig:
+    def __init__(self,traininng_pipeline_config_obj: TrainingPipelineConfig):
+        try:
+            self.data_cleaning_dir = os.path.join(traininng_pipeline_config_obj.artifact_dir,"Data cleaning") 
+            self.clean_data_file_path = os.path.join(self.data_cleaning_dir,"cleaned_data.csv")
+        except Exception as e:
+            raise InsuranceException(e,sys)
+
+
